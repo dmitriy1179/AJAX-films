@@ -2,7 +2,10 @@ body {
   padding-block: 30px;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 h2,
@@ -20,9 +23,37 @@ option {
 }
 
 #form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+  width: 50%;
+  margin: auto;
+
+  fieldset {
+    padding: 0;
+  }
+
+  legend {
+    text-align: center;
+    font-size: 36px;
+    line-height: 100%;
+    padding-bottom: 25px;
+  }
+
+  input {
+    width: calc(100% - 42px);
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid #737373;
+    padding: 10px 20px;
+  }
+
+  select {
+    display: block;
+    margin: 25px auto;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid #737373;
+    padding: 10px 20px;
+    text-align: center;
+  }
 }
 
 #list {
@@ -78,7 +109,8 @@ option {
   }
 }
 
-#moreBtn {
+#moreBtn,
+button {
   margin: 0 auto;
   font-size: 18px;
   border-radius: 15px;
@@ -114,13 +146,14 @@ option {
     align-items: center;
 
     div {
-      padding-left: 17px;
+      padding: 17px;
       align-self: self-start;
+      flex-grow: 1;
     }
 
     .detailsTitle {
       font-size: 34px;
-      padding-top: 15px;
+      padding-top: 10px;
       text-align: center;
     }
 

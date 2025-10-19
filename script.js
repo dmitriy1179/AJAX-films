@@ -68,7 +68,7 @@ function showFilm(film) {
   const img = list.querySelector(`[data-id=${film.imdbID}] img`);
 
   filmDetailsContainer.replaceChildren(closeDetails);
-  filmDetailsContainer.insertAdjacentHTML("beforeend",`
+  filmDetailsContainer.insertAdjacentHTML("beforeend", `
     <div>
       <h2 class="detailsTitle">${film.Title}</h2>
       <h3 class="detailsName">Actors</h3>
@@ -109,6 +109,13 @@ function showFilms(films, newQuery = false) {
           <p class="movieYear">${film.Year}</p>
         </li>`;
     })
+    if (page == 1) {
+      list.scrollIntoView(
+        {
+          behavior: "smooth",
+        }
+      )
+    }
   } else if (newQuery) {
     list.innerHTML = "No films found"
   }

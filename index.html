@@ -11,13 +11,16 @@
 
 <body>
   <form id="form" action="">
-    <input name="query" type="text">
-    <select name="category">
-      <option value="" selected>All</option>
-      <option value="movie">movies</option>
-      <option value="series">series</option>
-      <option value="episode">episodes</option>
-    </select>
+    <fieldset>
+      <legend>Enter the movie title and choose a category</legend>
+      <input name="query" type="text">
+      <select name="category">
+        <option value="" selected>All</option>
+        <option value="movie">movies</option>
+        <option value="series">series</option>
+        <option value="episode">episodes</option>
+      </select>
+    </fieldset>
     <button id="searchBtn">Search</button>
   </form>
   <ul id="list">
