@@ -1,10 +1,153 @@
-* {
-  padding: 0;
+body {
+  padding-block: 30px;
+  margin: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+  line-height: 100%;
+}
+
+input,
+select,
+button,
+option {
+  font-family: inherit;
 }
 
 #form {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+#list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  color: #ffffff;
+  padding-block: 30px;
+
+  &:hover li:not(:hover) {
+    opacity: 0.8;
+  }
+
+  .movie {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(#E6E1E1, #757575);
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 20px;
+    gap: 10px;
+    border: 1px solid #757575;
+    transition: .5s;
+
+    &:hover {
+      color: #000000;
+    }
+
+    .movieTitle {
+      width: 100%;
+      margin: 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+
+    .movieYear {
+      margin: 0 auto;
+    }
+
+    .moviePoster {
+      width: 260px;
+      height: 450px;
+      margin: 0 auto;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+  }
+}
+
+#moreBtn {
+  margin: 0 auto;
+  font-size: 18px;
+  border-radius: 15px;
+  border: 1px solid #737373;
+  padding: 10px 20px;
+  background: linear-gradient(#E6E1E1, #757575);
+  cursor: pointer;
+  color: #ffffff;
+  transition: .5s;
+
+  &:hover {
+    color: #000000;
+  }
+
+  &:not([hidden]) {
+    display: block;
+  }
+}
+
+#filmDetails {
+  width: 75%;
+  border: 1px solid #3D3D3D;
+  border-radius: 15px;
+  padding: 10px;
+  background: linear-gradient(#E6E1E1, #757575);
+
+  &::backdrop {
+    background-color: #0008;
+  }
+
+  #filmDetailsContainer {
+    display: flex;
+    align-items: center;
+
+    div {
+      padding-left: 17px;
+      align-self: self-start;
+    }
+
+    .detailsTitle {
+      font-size: 34px;
+      padding-top: 15px;
+      text-align: center;
+    }
+
+    .detailsName {
+      font-size: 28px;
+      padding-top: 15px;
+    }
+
+    .detailsDescription {
+      font-size: 20px;
+    }
+
+    img {
+      width: 45%;
+      height: fit-content;
+      border-radius: 15px;
+    }
+
+    #closeDetails {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      border: none;
+      outline: none;
+      padding: 0;
+      cursor: pointer;
+      background: unset;
+    }
+  }
 }
