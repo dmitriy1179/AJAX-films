@@ -8,19 +8,18 @@ const moreBtn = document.getElementById("moreBtn");
 const filmDetails = document.getElementById("filmDetails");
 const closeDetails = document.getElementById("closeDetails");
 const filmDetailsContainer = document.getElementById("filmDetailsContainer")
-let pages = 0;
 let page = 1;
 
 searchBtn.onclick = async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form))
+  const data = Object.fromEntries(new FormData(form));
   const query = form.query.value.trim();
   const type = form.category.value;
   if (!query) return;
   page = 1;
   const { films, total } = await searchFilms(query, type, page);
-  showFilms(films, true);
-  updateMoreBtn(total)
+  showFilms(films, page, true);
+  updateMoreBtn(total, page);
 }
 
 list.onclick = async (e) => {
@@ -42,7 +41,6 @@ async function searchFilms(query, type, page = 1) {
       throw new Error(response.statusText);
     }
     const result = await response.json();
-    console.log("result", result);
     return { films: result.Search, total: result.totalResults };
   } catch (e) {
     console.error(e);
@@ -57,7 +55,6 @@ async function getFilmDetails(id) {
       throw new Error(response.statusText);
     }
     const film = await response.json();
-    console.log("film", film);
     return film;
   } catch (e) {
     console.error(e);
@@ -95,7 +92,7 @@ function showFilm(film) {
   filmDetails.showModal();
 }
 
-function showFilms(films, newQuery = false) {
+function showFilms(films, page, newQuery = false) {
   if (newQuery) {
     list.replaceChildren();
   }
@@ -109,28 +106,29 @@ function showFilms(films, newQuery = false) {
           <p class="movieYear">${film.Year}</p>
         </li>`;
     })
-    if (page == 1) {
-      list.scrollIntoView(
-        {
-          behavior: "smooth",
-        }
-      )
-    }
+
+    list.children[page * 10 - 10].scrollIntoView(
+      {
+        behavior: "smooth",
+      }
+    )
+
   } else if (newQuery) {
-    list.innerHTML = "No films found"
+    list.style.color = "#000000";
+    list.style.fontSize = "36px";
+    list.innerHTML = "No films found";
   }
 }
 
-function updateMoreBtn(total) {
-  moreBtn.hidden = list.childCount == total;
+function updateMoreBtn(total, page) {
+  moreBtn.hidden = list.childCount == total || Math.ceil(total / 10) == page;
 
   moreBtn.onclick = async () => {
     const query = form.query.value.trim();
     const type = form.category.value;
     const { films, total } = await searchFilms(query, type, ++page);
-    showFilms(films);
-    updateMoreBtn(total);
-    // moreBtn.scrollIntoView();
+    showFilms(films, page);
+    updateMoreBtn(total, page);
   }
 }
 

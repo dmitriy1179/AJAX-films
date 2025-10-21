@@ -10,31 +10,31 @@
 </head>
 
 <body>
-  <form id="form" action="">
-    <fieldset>
-      <legend>Enter the movie title and choose a category</legend>
-      <input name="query" type="text">
+  <div class="searchCntainer">
+    <div class="title">Search films on omdb</div>
+    <form id="form" action="">
+      <input placeholder="Enter the movie title" name="query" type="text">
       <select name="category">
         <option value="" selected>All</option>
         <option value="movie">movies</option>
         <option value="series">series</option>
         <option value="episode">episodes</option>
       </select>
-    </fieldset>
-    <button id="searchBtn">Search</button>
-  </form>
+      <button id="searchBtn">Search</button>
+    </form>
+  </div>
   <ul id="list">
-
   </ul>
   <button id="moreBtn" hidden>Load more</button>
   <dialog id="filmDetails" closedby="any">
     <div id="filmDetailsContainer">
       <button id="closeDetails">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+        </svg>
       </button>
     </div>
   </dialog>
-
 </body>
 
 </html>
