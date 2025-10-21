@@ -1,4 +1,4 @@
-const API = "http://www.omdbapi.com";
+const API = "https://www.omdbapi.com";
 const key = "888cc6de";
 const ENDPOINT = `${API}/?apikey=${key}`;
 const searchBtn = document.getElementById("searchBtn");
